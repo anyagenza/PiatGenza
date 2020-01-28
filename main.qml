@@ -6,7 +6,6 @@ Window {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
     Rectangle {
         color: "dimgray"
         anchors.fill: parent
@@ -27,9 +26,14 @@ Window {
                     height: window.height/10
                     anchors.centerIn: parent
                     MouseArea {
+                        id: mouseArea
                         anchors.fill: parent
                         onClicked: gameboard.model.shuffle()
                     }
+                    states: State {
+                            name: "pressed"; when: mouseArea.pressed
+                            PropertyChanges { target: button; scale: 1.2 }
+                        }
                 }
         }
     }

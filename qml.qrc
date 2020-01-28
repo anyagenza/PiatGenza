@@ -4,5 +4,6 @@
         <file>Square.qml</file>
         <file>GameBoard.qml</file>
         <file>Button.qml</file>
+        <file>Message.qml</file>
     </qresource>
 </RCC>

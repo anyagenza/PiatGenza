@@ -3,30 +3,40 @@
 #include <QtCore>
 #include <QtGui>
 
+struct Position {
+    int x;
+    int y;
+};
+
 class GameBoardData : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<QString> m_data READ getm_data WRITE setm_data NOTIFY m_dataChanged)
     Q_PROPERTY(QString hiddenElement READ gethiddenElement WRITE sethiddenElement NOTIFY hiddenElementChanged)
 public:
-    GameBoardData(QObject* parent = nullptr);
+    Q_INVOKABLE GameBoardData(int size = 4, QObject* parent = nullptr);
+    Q_INVOKABLE void move(int);
+    Q_INVOKABLE void shuffle();
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
-    QString gethiddenElement();
+    QString gethiddenElement() const;
     void sethiddenElement(QString& element);
+private:
+    bool ifNear(int first, int secoond) const;
+    bool isAggregate() const;
+    Position getPosition(int index) const;
 
-    QList<QString> getm_data();
-    void setm_data(QList<QString>);
-
-    Q_INVOKABLE void shuffle();
 signals:
     void hiddenElementChanged();
-    void m_dataChanged();
+    void winGame();
 private:
     QList<QString> m_data;
+    QList<QString> m_dataStart;
     QString hiddenElement;
+    Position position;
+    const int m_size;
+    const int m_dimention;
 
 };
 
