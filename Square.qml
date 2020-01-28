@@ -6,18 +6,19 @@ Rectangle {
     border.color: "black"
     border.width: 2
     color: "dimgrey"
+    property alias text: delegateText.text
+
     Text {
         id: delegateText
-        text: model.display
         anchors.centerIn: parent
         color: "white"
         font {
-            bold: (square.width + square.height)/4
+            bold: (square.width + square.height) / 4
             pointSize: 24
         }
     }
     Behavior on y {
-                NumberAnimation { duration: 6000 }
-            }
+        NumberAnimation { duration: 6000 }
+    }
 
 }
