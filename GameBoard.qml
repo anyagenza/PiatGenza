@@ -10,6 +10,7 @@ GridView {
     model: GameBoardData {
         onWinGame: messageLoader.source = "Message.qml";
     }
+
     delegate: Item {
         width: view.cellWidth
         height: view.cellHeight

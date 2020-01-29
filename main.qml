@@ -44,8 +44,5 @@ Window {
             }
         }
     }
-    Loader {
-        anchors.fill: parent
-        id: messageLoader
-    }
+
 }
