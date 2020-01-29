@@ -17,7 +17,7 @@ GameBoardData::GameBoardData(int size, QObject* parent) : QAbstractListModel(par
 QVariant GameBoardData::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
-    if(row < 0 || row >= m_data.count()) {
+    if (row < 0 || row >= m_data.count()) {
         return QVariant();
     }
     switch(role) {
@@ -42,7 +42,6 @@ Position GameBoardData::getPosition(int index) const
 {
     int row = index / m_dimention;
     int col = index % m_dimention;
-
     return Position{row, col};
 }
 
@@ -80,7 +79,6 @@ bool GameBoardData::isAggregate() const
     return !(inv % 2);
 }
 
-
 void GameBoardData::move(int index)
 {
     auto hiddenElementIterator = std::find(m_data.begin(), m_data.end(), hiddenElement);
@@ -89,18 +87,14 @@ void GameBoardData::move(int index)
     int offsetForHorizontal = index < distance ? 1 : 0;
     int offsetForVertical = index < distance ? 0 : 1;
 
-    if(ifNear(distance, index)) {
+    if (ifNear(distance, index)) {
         if (std::abs(distance - index) == 1) {
-
-            beginMoveRows(QModelIndex(), index, index, QModelIndex(), distance + offsetForHorizontal);
-
+            beginMoveRows(QModelIndex(),index,index,QModelIndex(),distance + offsetForHorizontal);
         } else if (std::abs(distance - index) == m_size) {
-
-            beginMoveRows(QModelIndex(), index, index, QModelIndex(), distance);
+            beginMoveRows(QModelIndex(),index,index,QModelIndex(),distance);
             endMoveRows();
             beginMoveRows(QModelIndex(), distance + offsetForVertical,
                           distance + offsetForVertical, QModelIndex(), index + offsetForVertical);
-
         }
         std::swap(m_data[index], *hiddenElementIterator);
         endMoveRows();
@@ -108,7 +102,6 @@ void GameBoardData::move(int index)
     if (m_data == m_dataStart) {
         emit winGame();
     }
-
 }
 
 void GameBoardData::shuffle()

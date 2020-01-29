@@ -38,6 +38,4 @@ private:
     QString hiddenElement;
     const int m_size;
     const int m_dimention;
-
 };
-

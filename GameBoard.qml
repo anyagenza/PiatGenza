@@ -37,9 +37,4 @@ GridView {
         anchors.fill: parent
         id: messageLoader
     }
-
 }
-
-
-
-
