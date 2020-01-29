@@ -17,6 +17,7 @@ Rectangle {
             pointSize: 24
         }
     }
+
     Behavior on y {
         NumberAnimation { duration: 6000 }
     }

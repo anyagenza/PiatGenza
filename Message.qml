@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 
 MessageDialog {
     visible: true
-    text: "WWWWIN"
+    text: "YOU WWWWWWWWIN GAME"
 }
 
 

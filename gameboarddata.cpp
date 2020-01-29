@@ -65,22 +65,20 @@ bool GameBoardData::isAggregate() const
 {
     int inv {0};
     for (int i = 0; i < m_dimention; ++i) {
-        for (int j = 0; j < i; ++j) {
-            if (m_data[j] > m_data[i]) {
+        if (m_data[i].toInt() == 16) {
+            continue;
+        }
+        for (int j = i; j < m_dimention; ++j) {
+            if ((m_data[j].toInt() < m_data[i].toInt())) {
                 ++inv;
             }
         }
     }
+    auto hidden = std::find(m_data.begin(), m_data.end(), "16");
+    int index = hidden - m_data.begin();
+    inv += index / m_size + 1;
 
-    const int start_point = 1;
-
-    for (int i = 0; i < m_dimention; ++i) {
-        if (m_data[i] == m_dimention){
-            inv += start_point + i / m_size;
-        }
-    }
-
-    return (inv % 2) == 0;
+    return !(inv % 2);
 }
 
 
