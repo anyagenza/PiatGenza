@@ -13,7 +13,7 @@ class GameBoardData : public QAbstractListModel
     Q_PROPERTY(QString hiddenElement READ getHiddenElement NOTIFY hiddenElementChanged)
 
 public:
-    Q_INVOKABLE GameBoardData(int size = 4, QObject* parent = nullptr);
+    GameBoardData(int size = 4, QObject* parent = nullptr);
     Q_INVOKABLE void move(int);
     Q_INVOKABLE void shuffle();
 

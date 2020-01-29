@@ -21,5 +21,4 @@ Rectangle {
     Behavior on y {
         NumberAnimation { duration: 6000 }
     }
-
 }

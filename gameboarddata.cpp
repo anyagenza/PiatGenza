@@ -1,4 +1,3 @@
-#include <QAbstractItemModel>
 #include <iterator>
 #include <cmath>
 #include "gameboarddata.h"
